@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>Melle Boersma</title><link href="http://melleb.github.io/" rel="alternate"></link><link href="http://melleb.github.io/feeds/all.atom.xml" rel="self"></link><id>http://melleb.github.io/</id><updated>2016-06-28T00:00:00+02:00</updated><entry><title>Fixing volume buttons under XFCE</title><link href="http://melleb.github.io/posts/2016/06/28/fixing-volume-buttons-under-xfce/" rel="alternate"></link><published>2016-06-28T00:00:00+02:00</published><author><name>Melle Boersma</name></author><id>tag:melleb.github.io,2016-06-28:posts/2016/06/28/fixing-volume-buttons-under-xfce/</id><summary type="html">&lt;p&gt;Under XFCE my keyboard's volume buttons didn't work.
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Melle Boersma</title><link href="https://melleb.github.io/" rel="alternate"></link><link href="https://melleb.github.io/feeds/all.atom.xml" rel="self"></link><id>https://melleb.github.io/</id><updated>2016-06-28T00:00:00+02:00</updated><entry><title>Fixing volume buttons under XFCE</title><link href="https://melleb.github.io/posts/2016/06/28/fixing-volume-buttons-under-xfce/" rel="alternate"></link><published>2016-06-28T00:00:00+02:00</published><author><name>Melle Boersma</name></author><id>tag:melleb.github.io,2016-06-28:posts/2016/06/28/fixing-volume-buttons-under-xfce/</id><summary type="html">&lt;p&gt;Under XFCE my keyboard's volume buttons didn't work.
 The start/pause, stop, forward and backward buttons were controlling
 Rhythmbox correctly, but the volume buttons weren't configured.&lt;/p&gt;
 &lt;p&gt;You have to add the shortcuts manually in keyboard application shortcuts
@@ -26,10 +26,10 @@ Rhythmbox correctly, but the volume buttons weren't configured.&lt;/p&gt;
 &lt;/tr&gt;
 &lt;/tbody&gt;
 &lt;/table&gt;
-</summary><category term="ubuntu"></category><category term="xfce"></category><category term="note-to-self"></category></entry><entry><title>Connecting my HK Esquire bluetooth speaker on Ubuntu</title><link href="http://melleb.github.io/posts/2016/06/27/connecting-my-hk-esquire-bluetooth-speaker-on-ubuntu/" rel="alternate"></link><published>2016-06-27T00:00:00+02:00</published><author><name>Melle Boersma</name></author><id>tag:melleb.github.io,2016-06-27:posts/2016/06/27/connecting-my-hk-esquire-bluetooth-speaker-on-ubuntu/</id><summary type="html">&lt;p&gt;Some time ago I got a &lt;a class="reference external" href="http://www.harmankardon.com/bluetooth-speakers/ESQUIRE.html"&gt;HK Esquire Bluetooth Speaker&lt;/a&gt; which is
+</summary><category term="ubuntu"></category><category term="xfce"></category><category term="note-to-self"></category></entry><entry><title>Connecting my HK Esquire bluetooth speaker on Ubuntu</title><link href="https://melleb.github.io/posts/2016/06/27/connecting-my-hk-esquire-bluetooth-speaker-on-ubuntu/" rel="alternate"></link><published>2016-06-27T00:00:00+02:00</published><author><name>Melle Boersma</name></author><id>tag:melleb.github.io,2016-06-27:posts/2016/06/27/connecting-my-hk-esquire-bluetooth-speaker-on-ubuntu/</id><summary type="html">&lt;p&gt;Some time ago I got a &lt;a class="reference external" href="http://www.harmankardon.com/bluetooth-speakers/ESQUIRE.html"&gt;HK Esquire Bluetooth Speaker&lt;/a&gt; which is
 actually a really nice, solid speaker. Pairing and connecting is easy
 under Windows and Mac OS, but I couldn't get it to work on Ubuntu.&lt;/p&gt;
-&lt;p&gt;First, &lt;a class="reference external" href="http://melleb.github.io/posts/2016/06/19/enable-internal-bluetooth-bcm2046b1-adapter-on-ubuntu/"&gt;I had some trouble getting my bluetooth adapter to work&lt;/a&gt;,
+&lt;p&gt;First, &lt;a class="reference external" href="https://melleb.github.io/posts/2016/06/19/enable-internal-bluetooth-bcm2046b1-adapter-on-ubuntu/"&gt;I had some trouble getting my bluetooth adapter to work&lt;/a&gt;,
 after that the pairing worked, but I couldn't get the sound to work.
 After trying several solutions metioned on different fora, the
 solution was much simpler that I anticipated.&lt;/p&gt;
@@ -49,7 +49,7 @@ might be wrong.&lt;/p&gt;
 of the High Fidelity Heaset profile was crap, which might be expected.
 So I tried using the A2DP sink. It didn't work the first time, but
 after trying it a week later it worked. Yay.&lt;/p&gt;
-</summary><category term="ubuntu"></category><category term="note-to-self"></category></entry><entry><title>Highlight python class and method names</title><link href="http://melleb.github.io/posts/2016/06/24/highlight-python-class-and-method-names/" rel="alternate"></link><published>2016-06-24T00:00:00+02:00</published><author><name>Melle Boersma</name></author><id>tag:melleb.github.io,2016-06-24:posts/2016/06/24/highlight-python-class-and-method-names/</id><summary type="html">&lt;p&gt;Recently I began working on a personal python-based project. Having
+</summary><category term="ubuntu"></category><category term="note-to-self"></category></entry><entry><title>Highlight python class and method names</title><link href="https://melleb.github.io/posts/2016/06/24/highlight-python-class-and-method-names/" rel="alternate"></link><published>2016-06-24T00:00:00+02:00</published><author><name>Melle Boersma</name></author><id>tag:melleb.github.io,2016-06-24:posts/2016/06/24/highlight-python-class-and-method-names/</id><summary type="html">&lt;p&gt;Recently I began working on a personal python-based project. Having
 worked with python in the past, it was a welcoming experience. I
 wasn't really used to a indent-sensitive language. And I figured I
 could use some visual aids to quickly tell class and method
@@ -83,10 +83,10 @@ following snippet:&lt;/p&gt;
 &lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;With some more work I could probably reduce this to a single regex. Oh
 well. Anyway, here's a screenshot with the result:&lt;/p&gt;
-&lt;img alt="Highlight python source code" src="http://melleb.github.io/posts/2016/06/24/highlight-python-class-and-method-names/007-highlight-class-method-defenitions.png" style="width: 851px; height: 700px;" /&gt;
+&lt;img alt="Highlight python source code" src="https://melleb.github.io/posts/2016/06/24/highlight-python-class-and-method-names/007-highlight-class-method-defenitions.png" style="width: 851px; height: 700px;" /&gt;
 &lt;p&gt;I opened an &lt;a class="reference external" href="https://github.com/fniessen/emacs-leuven-theme/issues/29"&gt;issue&lt;/a&gt; on the Leuven Theme github repo, to see if others
 like this as well.&lt;/p&gt;
-</summary><category term="emacs"></category><category term="python"></category></entry><entry><title>Enable internal bluetooth BCM2046(B1) adapter on Ubuntu</title><link href="http://melleb.github.io/posts/2016/06/19/enable-internal-bluetooth-bcm2046b1-adapter-on-ubuntu/" rel="alternate"></link><published>2016-06-19T00:00:00+02:00</published><author><name>Melle Boersma</name></author><id>tag:melleb.github.io,2016-06-19:posts/2016/06/19/enable-internal-bluetooth-bcm2046b1-adapter-on-ubuntu/</id><summary type="html">&lt;p&gt;For some reason I couldn't get my bluetooth to work in ubuntu 16.04 on
+</summary><category term="emacs"></category><category term="python"></category></entry><entry><title>Enable internal bluetooth BCM2046(B1) adapter on Ubuntu</title><link href="https://melleb.github.io/posts/2016/06/19/enable-internal-bluetooth-bcm2046b1-adapter-on-ubuntu/" rel="alternate"></link><published>2016-06-19T00:00:00+02:00</published><author><name>Melle Boersma</name></author><id>tag:melleb.github.io,2016-06-19:posts/2016/06/19/enable-internal-bluetooth-bcm2046b1-adapter-on-ubuntu/</id><summary type="html">&lt;p&gt;For some reason I couldn't get my bluetooth to work in ubuntu 16.04 on
 my old Dell Vostro 3700. These are the steps I took in order to make
 it work. A note to my future self.&lt;/p&gt;
 &lt;p&gt;&lt;tt class="docutils literal"&gt;lsusb&lt;/tt&gt; shows that there is indeed a Bluetooth device:&lt;/p&gt;
@@ -143,7 +143,7 @@ was 32-bit.&lt;/p&gt;
 &lt;p&gt;After this my bluetooth adapter works. I might still need to enable
 the bluetooth service using modprobe as described above. But at least
 my bluetooth adapter is recognized.&lt;/p&gt;
-</summary><category term="ubuntu"></category></entry><entry><title>Org-mode show TODO keywords at bottom</title><link href="http://melleb.github.io/posts/2016/04/02/org-mode-show-todo-keywords-at-bottom/" rel="alternate"></link><published>2016-04-02T00:00:00+02:00</published><author><name>Melle Boersma</name></author><id>tag:melleb.github.io,2016-04-02:posts/2016/04/02/org-mode-show-todo-keywords-at-bottom/</id><summary type="html">&lt;p&gt;In org-mode you can quickly toggle todo states when you define shortcuts.
+</summary><category term="ubuntu"></category></entry><entry><title>Org-mode show TODO keywords at bottom</title><link href="https://melleb.github.io/posts/2016/04/02/org-mode-show-todo-keywords-at-bottom/" rel="alternate"></link><published>2016-04-02T00:00:00+02:00</published><author><name>Melle Boersma</name></author><id>tag:melleb.github.io,2016-04-02:posts/2016/04/02/org-mode-show-todo-keywords-at-bottom/</id><summary type="html">&lt;p&gt;In org-mode you can quickly toggle todo states when you define shortcuts.
 For instance, my &lt;cite&gt;init.el&lt;/cite&gt; contains the following TODO keywords:&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="k"&gt;setq&lt;/span&gt; &lt;span class="nv"&gt;org-todo-keywords&lt;/span&gt;
        &lt;span class="o"&gt;&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;((&lt;/span&gt;&lt;span class="nv"&gt;sequence&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;TODO(t)&amp;quot;&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;NEXT(n)&amp;quot;&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;IN-PROGRESS(p)&amp;quot;&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;WAITING(w)&amp;quot;&lt;/span&gt;
@@ -163,7 +163,7 @@ By using the &lt;a class="reference external" href="https://github.com/m2ym/popw
 &lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;The trick was to set the display-buffer-function to use the popwin implementation.&lt;/p&gt;
 &lt;p&gt;Hopefully this saves someone a bit of time.&lt;/p&gt;
-</summary><category term="emacs"></category><category term="org-mode"></category><category term="note-to-self"></category></entry><entry><title>Speeding up Emacs start-up and file loading</title><link href="http://melleb.github.io/posts/2016/02/01/speeding-up-emacs-start-up-and-file-loading/" rel="alternate"></link><published>2016-02-01T00:00:00+01:00</published><author><name>Melle Boersma</name></author><id>tag:melleb.github.io,2016-02-01:posts/2016/02/01/speeding-up-emacs-start-up-and-file-loading/</id><summary type="html">&lt;p&gt;In this post I describe the steps I undertook to speed-up my Emacs under Windows 7.&lt;/p&gt;
+</summary><category term="emacs"></category><category term="org-mode"></category><category term="note-to-self"></category></entry><entry><title>Speeding up Emacs start-up and file loading</title><link href="https://melleb.github.io/posts/2016/02/01/speeding-up-emacs-start-up-and-file-loading/" rel="alternate"></link><published>2016-02-01T00:00:00+01:00</published><author><name>Melle Boersma</name></author><id>tag:melleb.github.io,2016-02-01:posts/2016/02/01/speeding-up-emacs-start-up-and-file-loading/</id><summary type="html">&lt;p&gt;In this post I describe the steps I undertook to speed-up my Emacs under Windows 7.&lt;/p&gt;
 &lt;div class="section" id="improving-start-up-time"&gt;
 &lt;h2&gt;Improving start-up time&lt;/h2&gt;
 &lt;p&gt;My initial experience of Emacs' start-up time on Windows wasn't great.
@@ -213,7 +213,7 @@ which points to &lt;a class="reference external" href="http://stackoverflow.com/
 &lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;I hope this saves someone (or the future me) some time.&lt;/p&gt;
 &lt;/div&gt;
-</summary><category term="emacs"></category><category term="note-to-self"></category></entry><entry><title>Exporting Emacs Org documents to Microsoft Word</title><link href="http://melleb.github.io/posts/2016/01/10/exporting-emacs-org-documents-to-microsoft-word/" rel="alternate"></link><published>2016-01-10T00:00:00+01:00</published><author><name>Melle Boersma</name></author><id>tag:melleb.github.io,2016-01-10:posts/2016/01/10/exporting-emacs-org-documents-to-microsoft-word/</id><summary type="html">&lt;p&gt;In order to export org-mode documents to Microsoft Word I took the following steps:&lt;/p&gt;
+</summary><category term="emacs"></category><category term="note-to-self"></category></entry><entry><title>Exporting Emacs Org documents to Microsoft Word</title><link href="https://melleb.github.io/posts/2016/01/10/exporting-emacs-org-documents-to-microsoft-word/" rel="alternate"></link><published>2016-01-10T00:00:00+01:00</published><author><name>Melle Boersma</name></author><id>tag:melleb.github.io,2016-01-10:posts/2016/01/10/exporting-emacs-org-documents-to-microsoft-word/</id><summary type="html">&lt;p&gt;In order to export org-mode documents to Microsoft Word I took the following steps:&lt;/p&gt;
 &lt;ol class="arabic"&gt;
 &lt;li&gt;&lt;p class="first"&gt;Install Cygwin, and specifically the &lt;cite&gt;unzip&lt;/cite&gt; executable.
 (I read &lt;a class="reference external" href="http://permalink.gmane.org/gmane.emacs.orgmode/69882"&gt;Info-Zip&lt;/a&gt; seems to work, but haven't tried it myself.)&lt;/p&gt;
@@ -234,7 +234,7 @@ Be sure to add the &lt;cite&gt;App\libreoffice\program&lt;/cite&gt; directory to
 &lt;li&gt;&lt;p class="first"&gt;Finally, restart Emacs.&lt;/p&gt;
 &lt;/li&gt;
 &lt;/ol&gt;
-</summary><category term="emacs"></category><category term="org-mode"></category><category term="note-to-self"></category></entry><entry><title>Showing inline images in Emacs on Windows</title><link href="http://melleb.github.io/posts/2016/01/05/showing-inline-images-in-emacs-on-windows/" rel="alternate"></link><published>2016-01-05T00:00:00+01:00</published><author><name>Melle Boersma</name></author><id>tag:melleb.github.io,2016-01-05:posts/2016/01/05/showing-inline-images-in-emacs-on-windows/</id><summary type="html">&lt;p&gt;For me &lt;cite&gt;M-x&lt;/cite&gt; &lt;cite&gt;org-display-inline-images&lt;/cite&gt; didn't work on windows.
+</summary><category term="emacs"></category><category term="org-mode"></category><category term="note-to-self"></category></entry><entry><title>Showing inline images in Emacs on Windows</title><link href="https://melleb.github.io/posts/2016/01/05/showing-inline-images-in-emacs-on-windows/" rel="alternate"></link><published>2016-01-05T00:00:00+01:00</published><author><name>Melle Boersma</name></author><id>tag:melleb.github.io,2016-01-05:posts/2016/01/05/showing-inline-images-in-emacs-on-windows/</id><summary type="html">&lt;p&gt;For me &lt;cite&gt;M-x&lt;/cite&gt; &lt;cite&gt;org-display-inline-images&lt;/cite&gt; didn't work on windows.
 The error I get is: &lt;cite&gt;&amp;quot;No images to display inline&amp;quot;&lt;/cite&gt;&lt;/p&gt;
 &lt;p&gt;Googling gave me &lt;a class="reference external" href="https://www.gnu.org/software/emacs/manual/html_node/efaq-w32/Image-support.html#Image-support"&gt;this&lt;/a&gt;, but that didn't really help...&lt;/p&gt;
 &lt;p&gt;Eventually the &lt;a class="reference external" href="http://ftp.snt.utwente.nl/pub/software/gnu/emacs/windows/README"&gt;README&lt;/a&gt; in the Emacs downloads folder was more helpful:&lt;/p&gt;
