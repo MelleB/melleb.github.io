@@ -10,14 +10,15 @@ import sys
 sys.path.append(os.curdir)
 from pelicanconf import *
 
-SITEURL = 'http://melleb.github.io'
+SITEURL = 'https://melleb.github.io'
 RELATIVE_URLS = False
 
 FEED_DOMAIN = SITEURL
 FEED_ALL_ATOM = 'feeds/all.atom.xml'
 CATEGORY_FEED_ATOM = 'feeds/%s.atom.xml'
 
-DELETE_OUTPUT_DIRECTORY = True
+# Do not delete output directory (delete's .git dir as well)
+DELETE_OUTPUT_DIRECTORY = False
 
 # Following items are often useful when publishing
 
