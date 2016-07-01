@@ -1,0 +1,259 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Melle Boersma</title><link href="http://melleb.github.io/" rel="alternate"></link><link href="http://melleb.github.io/feeds/all.atom.xml" rel="self"></link><id>http://melleb.github.io/</id><updated>2016-06-28T00:00:00+02:00</updated><entry><title>Fixing volume buttons under XFCE</title><link href="http://melleb.github.io/posts/2016/06/28/fixing-volume-buttons-under-xfce/" rel="alternate"></link><published>2016-06-28T00:00:00+02:00</published><author><name>Melle Boersma</name></author><id>tag:melleb.github.io,2016-06-28:posts/2016/06/28/fixing-volume-buttons-under-xfce/</id><summary type="html">&lt;p&gt;Under XFCE my keyboard's volume buttons didn't work.
+The start/pause, stop, forward and backward buttons were controlling
+Rhythmbox correctly, but the volume buttons weren't configured.&lt;/p&gt;
+&lt;p&gt;You have to add the shortcuts manually in keyboard application shortcuts
+(Settings Manager &amp;gt; Keyboard &amp;gt; Application Shortcuts).&lt;/p&gt;
+&lt;table border="1" class="docutils"&gt;
+&lt;colgroup&gt;
+&lt;col width="48%" /&gt;
+&lt;col width="52%" /&gt;
+&lt;/colgroup&gt;
+&lt;thead valign="bottom"&gt;
+&lt;tr&gt;&lt;th class="head"&gt;Shortcut&lt;/th&gt;
+&lt;th class="head"&gt;Command&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody valign="top"&gt;
+&lt;tr&gt;&lt;td&gt;XF86AudioLowerVolume&lt;/td&gt;
+&lt;td&gt;amixer set Master 5%+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;XF86AudioRaiseVolume&lt;/td&gt;
+&lt;td&gt;amixer set Master 5%-&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;XF86AudioMute&lt;/td&gt;
+&lt;td&gt;amixer set Master toggle&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+</summary><category term="ubuntu"></category><category term="xfce"></category><category term="note-to-self"></category></entry><entry><title>Connecting my HK Esquire bluetooth speaker on Ubuntu</title><link href="http://melleb.github.io/posts/2016/06/27/connecting-my-hk-esquire-bluetooth-speaker-on-ubuntu/" rel="alternate"></link><published>2016-06-27T00:00:00+02:00</published><author><name>Melle Boersma</name></author><id>tag:melleb.github.io,2016-06-27:posts/2016/06/27/connecting-my-hk-esquire-bluetooth-speaker-on-ubuntu/</id><summary type="html">&lt;p&gt;Some time ago I got a &lt;a class="reference external" href="http://www.harmankardon.com/bluetooth-speakers/ESQUIRE.html"&gt;HK Esquire Bluetooth Speaker&lt;/a&gt; which is
+actually a really nice, solid speaker. Pairing and connecting is easy
+under Windows and Mac OS, but I couldn't get it to work on Ubuntu.&lt;/p&gt;
+&lt;p&gt;First, &lt;a class="reference external" href="http://melleb.github.io/posts/2016/06/19/enable-internal-bluetooth-bcm2046b1-adapter-on-ubuntu/"&gt;I had some trouble getting my bluetooth adapter to work&lt;/a&gt;,
+after that the pairing worked, but I couldn't get the sound to work.
+After trying several solutions metioned on different fora, the
+solution was much simpler that I anticipated.&lt;/p&gt;
+&lt;p&gt;Part of the solution was to install the bluetooth module for
+PulseAudio using&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;sudo apt-get install pulseaudio-module-bluetooth
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;But that alone didn't fix the issue. After connecting to the speaker,
+you need to kill/reset the pulseaudio deamon using&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;pulseaudio -k
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;For some reason this makes the speaker show up in PulseAudio Volume
+Control. My guess is that it resets the list of output devices. But I
+might be wrong.&lt;/p&gt;
+&lt;p&gt;I got to choose between two audio profiles: &lt;cite&gt;High Fidelity Playback
+(A2DP Sink)&lt;/cite&gt; and &lt;cite&gt;High Fidelity Headset (HSP/HFP)&lt;/cite&gt;. The sound output
+of the High Fidelity Heaset profile was crap, which might be expected.
+So I tried using the A2DP sink. It didn't work the first time, but
+after trying it a week later it worked. Yay.&lt;/p&gt;
+</summary><category term="ubuntu"></category><category term="note-to-self"></category></entry><entry><title>Highlight python class and method names</title><link href="http://melleb.github.io/posts/2016/06/24/highlight-python-class-and-method-names/" rel="alternate"></link><published>2016-06-24T00:00:00+02:00</published><author><name>Melle Boersma</name></author><id>tag:melleb.github.io,2016-06-24:posts/2016/06/24/highlight-python-class-and-method-names/</id><summary type="html">&lt;p&gt;Recently I began working on a personal python-based project. Having
+worked with python in the past, it was a welcoming experience. I
+wasn't really used to a indent-sensitive language. And I figured I
+could use some visual aids to quickly tell class and method
+definitions apart when scanning source files.&lt;/p&gt;
+&lt;p&gt;In my Emacs set-up I use the &lt;a class="reference external" href="https://github.com/fniessen/emacs-leuven-theme"&gt;leuven theme&lt;/a&gt;. It's quite a minimal
+theme, which seems especially geared towards the use of org-mode. For
+non-emacs converts, one of the benefits of the Emacs display system is
+that you can have different font faces in a single document. For
+instance, the leuven theme uses a bigger font size for level 1
+headings, and gives each level a different background color.&lt;/p&gt;
+&lt;p&gt;I figured I wanted something like that for class and method
+definitions. After some fiddeling around, I'm satisfied with the
+following snippet:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nv"&gt;font-lock-add-keywords&lt;/span&gt; &lt;span class="ss"&gt;&amp;#39;python-mode&lt;/span&gt;
+ &lt;span class="o"&gt;&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;((&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;^\s*\\(def\s*\\)\\(.*\\)\\((.*):.*\xa\\)&amp;quot;&lt;/span&gt; &lt;span class="c1"&gt;; Highlight &amp;quot;def my_func(param):&amp;quot;&lt;/span&gt;
+    &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt; &lt;span class="o"&gt;&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nb"&gt;:inherit&lt;/span&gt; &lt;span class="nv"&gt;font-lock-keyword-face&lt;/span&gt; &lt;span class="nb"&gt;:background&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;#F3F3F3&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
+    &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;2&lt;/span&gt; &lt;span class="o"&gt;&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nb"&gt;:inherit&lt;/span&gt; &lt;span class="nv"&gt;font-lock-function-name-face&lt;/span&gt; &lt;span class="nb"&gt;:background&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;#F3F3F3&amp;quot;&lt;/span&gt; &lt;span class="nb"&gt;:weight&lt;/span&gt; &lt;span class="nv"&gt;bold&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
+    &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;3&lt;/span&gt; &lt;span class="o"&gt;&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nb"&gt;:background&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;#F3F3F3&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
+    &lt;span class="p"&gt;)&lt;/span&gt;
+   &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;^\s*\\(class\s*\\)\\(.*\\)\\((.*):.*\xa\\)&amp;quot;&lt;/span&gt; &lt;span class="c1"&gt;; Highlight &amp;quot;class MyClass(Base):&amp;quot;&lt;/span&gt;
+    &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt; &lt;span class="o"&gt;&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nb"&gt;:inherit&lt;/span&gt; &lt;span class="nv"&gt;font-lock-keyword-face&lt;/span&gt; &lt;span class="nb"&gt;:background&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;#EEEEEE&amp;quot;&lt;/span&gt; &lt;span class="nb"&gt;:height&lt;/span&gt; &lt;span class="mf"&gt;1.4&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
+    &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;2&lt;/span&gt; &lt;span class="o"&gt;&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nb"&gt;:inherit&lt;/span&gt; &lt;span class="nv"&gt;font-lock-function-name-face&lt;/span&gt; &lt;span class="nb"&gt;:background&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;#EEEEEE&amp;quot;&lt;/span&gt; &lt;span class="nb"&gt;:height&lt;/span&gt; &lt;span class="mf"&gt;1.4&lt;/span&gt; &lt;span class="nb"&gt;:weight&lt;/span&gt; &lt;span class="nv"&gt;bold&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
+    &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;3&lt;/span&gt; &lt;span class="o"&gt;&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nb"&gt;:background&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;#EEEEEE&amp;quot;&lt;/span&gt; &lt;span class="nb"&gt;:height&lt;/span&gt; &lt;span class="mf"&gt;1.4&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
+    &lt;span class="p"&gt;)&lt;/span&gt;
+   &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;^\s*\\(class\s*\\)\\(.*\\)\\(:.*\xa\\)&amp;quot;&lt;/span&gt;  &lt;span class="c1"&gt;; Highlight &amp;quot;class MyClass:&amp;quot;&lt;/span&gt;
+    &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt; &lt;span class="o"&gt;&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nb"&gt;:inherit&lt;/span&gt; &lt;span class="nv"&gt;font-lock-keyword-face&lt;/span&gt; &lt;span class="nb"&gt;:background&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;#EEEEEE&amp;quot;&lt;/span&gt; &lt;span class="nb"&gt;:height&lt;/span&gt; &lt;span class="mf"&gt;1.4&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
+    &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;2&lt;/span&gt; &lt;span class="o"&gt;&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nb"&gt;:inherit&lt;/span&gt; &lt;span class="nv"&gt;font-lock-function-name-face&lt;/span&gt; &lt;span class="nb"&gt;:background&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;#EEEEEE&amp;quot;&lt;/span&gt; &lt;span class="nb"&gt;:height&lt;/span&gt; &lt;span class="mf"&gt;1.4&lt;/span&gt; &lt;span class="nb"&gt;:weight&lt;/span&gt; &lt;span class="nv"&gt;bold&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
+    &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;3&lt;/span&gt; &lt;span class="o"&gt;&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nb"&gt;:background&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;#EEEEEE&amp;quot;&lt;/span&gt; &lt;span class="nb"&gt;:height&lt;/span&gt; &lt;span class="mf"&gt;1.4&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
+    &lt;span class="p"&gt;)&lt;/span&gt;
+   &lt;span class="p"&gt;))&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;With some more work I could probably reduce this to a single regex. Oh
+well. Anyway, here's a screenshot with the result:&lt;/p&gt;
+&lt;img alt="Highlight python source code" src="http://melleb.github.io/posts/2016/06/24/highlight-python-class-and-method-names/007-highlight-class-method-defenitions.png" style="width: 851px; height: 700px;" /&gt;
+&lt;p&gt;I opened an &lt;a class="reference external" href="https://github.com/fniessen/emacs-leuven-theme/issues/29"&gt;issue&lt;/a&gt; on the Leuven Theme github repo, to see if others
+like this as well.&lt;/p&gt;
+</summary><category term="emacs"></category><category term="python"></category></entry><entry><title>Enable internal bluetooth BCM2046(B1) adapter on Ubuntu</title><link href="http://melleb.github.io/posts/2016/06/19/enable-internal-bluetooth-bcm2046b1-adapter-on-ubuntu/" rel="alternate"></link><published>2016-06-19T00:00:00+02:00</published><author><name>Melle Boersma</name></author><id>tag:melleb.github.io,2016-06-19:posts/2016/06/19/enable-internal-bluetooth-bcm2046b1-adapter-on-ubuntu/</id><summary type="html">&lt;p&gt;For some reason I couldn't get my bluetooth to work in ubuntu 16.04 on
+my old Dell Vostro 3700. These are the steps I took in order to make
+it work. A note to my future self.&lt;/p&gt;
+&lt;p&gt;&lt;tt class="docutils literal"&gt;lsusb&lt;/tt&gt; shows that there is indeed a Bluetooth device:&lt;/p&gt;
+&lt;blockquote&gt;
+Bus 001 Device 003: ID 0a5c:4500 Broadcom Corp. BCM2046B1 USB 2.0
+Hub (part of BCM2046 Bluetooth)&lt;/blockquote&gt;
+&lt;p&gt;First diagnosis: &lt;tt class="docutils literal"&gt;sudo service bluetooth status&lt;/tt&gt; showed a failed
+process. After running &lt;tt class="docutils literal"&gt;sudo modprobe &lt;span class="pre"&gt;-r&lt;/span&gt; btusb; sudo modprobe
+btusb&lt;/tt&gt;, I could start the bluetooth service without failure. Now the
+bluetooth service was enabled, but no adapters were found.&lt;/p&gt;
+&lt;p&gt;I remembered disabling the bluetooth adapter under windows when I got
+the laptop. I figured I didn't need it back then. This seemed to
+be essential, and something the linux drivers didn't support.
+According to linux, everyting was enabled.&lt;/p&gt;
+&lt;p&gt;Several fora mention extraction of linux drivers from their Windows
+counterparts. I couldn't get this to work, because I couldn't
+determine which driver to use.&lt;/p&gt;
+&lt;p&gt;I thought about installing windows side-by-side with Ubuntu for a
+while in order to enable the bluetooth driver again. But messing
+around with partitions, volumes and bootloaders seemed way too much
+work just to enable bluetooth. I figured I could try running a Windows
+VM, and enable the adapter in there. A long shot, but it worked!&lt;/p&gt;
+&lt;p&gt;I performed the following steps:&lt;/p&gt;
+&lt;ol class="arabic"&gt;
+&lt;li&gt;&lt;p class="first"&gt;Install the bluetooth module for PulseAudio: &lt;tt class="docutils literal"&gt;sudo &lt;span class="pre"&gt;apt-get&lt;/span&gt; install
+&lt;span class="pre"&gt;pulseaudio-module-bluetooth&lt;/span&gt;&lt;/tt&gt;.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p class="first"&gt;Install virtualbox and load a windows VM Installing virtual box is
+as simple as &lt;tt class="docutils literal"&gt;sudo &lt;span class="pre"&gt;apt-get&lt;/span&gt; install virtualbox&lt;/tt&gt;. You also need to
+download/install the &lt;a class="reference external" href="https://www.virtualbox.org/wiki/Downloads"&gt;virtualbox extension pack&lt;/a&gt; for USB 2.0
+support.&lt;/p&gt;
+&lt;p&gt;Windows VM's are easy to come by these days, since Microsoft makes
+them publicly available for testing web development efforts against
+older MSIE versions. I got the &lt;a class="reference external" href="https://developer.microsoft.com/en-us/microsoft-edge/tools/vms/linux/"&gt;IE8 on Win7&lt;/a&gt; version. Load the VM.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p class="first"&gt;Next, add yourself to the &lt;tt class="docutils literal"&gt;vboxusers&lt;/tt&gt; group &lt;tt class="docutils literal"&gt;sudo usermod &lt;span class="pre"&gt;-a&lt;/span&gt; &lt;span class="pre"&gt;-G&lt;/span&gt;
+vboxusers $USER&lt;/tt&gt;. Don't forget to logout and login again.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p class="first"&gt;Add all your USB devices to the VirtualBox Go to settings &amp;gt; USB.
+Enable usb 2.0 and add all devices. In my case I wasn't sure which
+device was the bluetooth device, but I read on the &lt;a class="reference external" href="https://forums.linuxmint.com/viewtopic.php?t=56621"&gt;LinuxMint
+forum&lt;/a&gt; that changing the mode of the wireless adapter made the
+bluetooth adapter show up. So I had a hunch where to look.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p class="first"&gt;Start the VM, download the bluetooth drivers Download the drivers
+for the bluetooth dongle. In my case I entered my laptop serial
+number on the dell website and I got the &lt;em&gt;wireless&lt;/em&gt; driver for
+windows 7. Make sure you download the right platform, which for me
+was 32-bit.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p class="first"&gt;Install the drivers in the new VM.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;After this my bluetooth adapter works. I might still need to enable
+the bluetooth service using modprobe as described above. But at least
+my bluetooth adapter is recognized.&lt;/p&gt;
+</summary><category term="ubuntu"></category></entry><entry><title>Org-mode show TODO keywords at bottom</title><link href="http://melleb.github.io/posts/2016/04/02/org-mode-show-todo-keywords-at-bottom/" rel="alternate"></link><published>2016-04-02T00:00:00+02:00</published><author><name>Melle Boersma</name></author><id>tag:melleb.github.io,2016-04-02:posts/2016/04/02/org-mode-show-todo-keywords-at-bottom/</id><summary type="html">&lt;p&gt;In org-mode you can quickly toggle todo states when you define shortcuts.
+For instance, my &lt;cite&gt;init.el&lt;/cite&gt; contains the following TODO keywords:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="k"&gt;setq&lt;/span&gt; &lt;span class="nv"&gt;org-todo-keywords&lt;/span&gt;
+       &lt;span class="o"&gt;&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;((&lt;/span&gt;&lt;span class="nv"&gt;sequence&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;TODO(t)&amp;quot;&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;NEXT(n)&amp;quot;&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;IN-PROGRESS(p)&amp;quot;&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;WAITING(w)&amp;quot;&lt;/span&gt;
+                   &lt;span class="s"&gt;&amp;quot;|&amp;quot;&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;DEFERED(f)&amp;quot;&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;DONE(d)&amp;quot;&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;CANCELLED(c@)&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;)))&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;This allows me to tap e.g. &lt;tt class="docutils literal"&gt;&lt;span class="pre"&gt;C-t&lt;/span&gt; n&lt;/tt&gt; on a heading to change its status to
+NEXT or &lt;tt class="docutils literal"&gt;&lt;span class="pre"&gt;C-t&lt;/span&gt; c&lt;/tt&gt; to set it's status to CANCELLED and enter a reason.
+For more info, see &lt;a class="reference external" href="http://orgmode.org/manual/Fast-access-to-TODO-states.html"&gt;Fast access to TODO states&lt;/a&gt; in the org-mode manual.&lt;/p&gt;
+&lt;p&gt;By default these pop-up in the other window, in my case this is often a
+document which I have open in a  vertical split.
+I wanted these top pop-up at the bottom of the screen.
+By using the &lt;a class="reference external" href="https://github.com/m2ym/popwin-el"&gt;popwin&lt;/a&gt; package I was able to pull this off by adding the following lines to my config.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nb"&gt;require&lt;/span&gt; &lt;span class="ss"&gt;&amp;#39;popwin&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="k"&gt;setq&lt;/span&gt; &lt;span class="nv"&gt;display-buffer-function&lt;/span&gt; &lt;span class="ss"&gt;&amp;#39;popwin:display-buffer&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nv"&gt;add-to-list&lt;/span&gt; &lt;span class="ss"&gt;&amp;#39;popwin:special-display-config&lt;/span&gt; &lt;span class="o"&gt;&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;quot; *Org todo*&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
+&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nv"&gt;popwin-mode&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;The trick was to set the display-buffer-function to use the popwin implementation.&lt;/p&gt;
+&lt;p&gt;Hopefully this saves someone a bit of time.&lt;/p&gt;
+</summary><category term="emacs"></category><category term="org-mode"></category><category term="note-to-self"></category></entry><entry><title>Speeding up Emacs start-up and file loading</title><link href="http://melleb.github.io/posts/2016/02/01/speeding-up-emacs-start-up-and-file-loading/" rel="alternate"></link><published>2016-02-01T00:00:00+01:00</published><author><name>Melle Boersma</name></author><id>tag:melleb.github.io,2016-02-01:posts/2016/02/01/speeding-up-emacs-start-up-and-file-loading/</id><summary type="html">&lt;p&gt;In this post I describe the steps I undertook to speed-up my Emacs under Windows 7.&lt;/p&gt;
+&lt;div class="section" id="improving-start-up-time"&gt;
+&lt;h2&gt;Improving start-up time&lt;/h2&gt;
+&lt;p&gt;My initial experience of Emacs' start-up time on Windows wasn't great.
+After installing a couple of packages I noticed things became a bit slower.
+I was using John Wiegley's &lt;a class="reference external" href="https://github.com/jwiegley/use-package"&gt;use-package&lt;/a&gt; plugin for managing packages, this
+kept everything nice and modular, however being an novice whom only recently
+converted to the church of Emacs, I knew little about the things actually
+happening at start-up time.&lt;/p&gt;
+&lt;p&gt;To analyse where time is spent during Emacs' start-up, I installed the
+&lt;a class="reference external" href="https://github.com/jschaf/esup"&gt;Emacs Start Up Profiler&lt;/a&gt; (esup) from Melpa using&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nb"&gt;use-package&lt;/span&gt; &lt;span class="nv"&gt;esup&lt;/span&gt;
+ &lt;span class="nb"&gt;:defer&lt;/span&gt; &lt;span class="no"&gt;t&lt;/span&gt;
+ &lt;span class="nb"&gt;:ensure&lt;/span&gt; &lt;span class="no"&gt;t&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;You can check you current start-up time and extra info by running the &lt;cite&gt;esup&lt;/cite&gt; (&lt;tt class="docutils literal"&gt;&lt;span class="pre"&gt;M-x&lt;/span&gt; esup&lt;/tt&gt;)
+command provided by the package. This opens a new Emacs window and measures start-up time of
+both the window and it's packages. You get a nice report in your current Emacs window.&lt;/p&gt;
+&lt;p&gt;After running these I noticed several most of the packges were loaded during
+Emacs start-up, which wasn't really necessary. By adding the &lt;tt class="docutils literal"&gt;:defer t&lt;/tt&gt; option
+to my &lt;tt class="docutils literal"&gt;&lt;span class="pre"&gt;use-package&lt;/span&gt;&lt;/tt&gt; statements, package loading was deferred until the packages
+were actually required. Already I noticed quite a speed-up. Running the &lt;cite&gt;esup&lt;/cite&gt; command again
+confirmed this.&lt;/p&gt;
+&lt;p&gt;Another trick I used was the increase of the threshold for garbage collection.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="k"&gt;setq&lt;/span&gt; &lt;span class="nv"&gt;gc-cons-threshold&lt;/span&gt; &lt;span class="mi"&gt;100000000&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Finally I used the &lt;cite&gt;auto-compile&lt;/cite&gt; to - wait for it - auto compile &lt;cite&gt;.el&lt;/cite&gt; files on save.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nb"&gt;use-package&lt;/span&gt; &lt;span class="nv"&gt;auto-compile&lt;/span&gt;
+ &lt;span class="nb"&gt;:ensure&lt;/span&gt; &lt;span class="no"&gt;t&lt;/span&gt;
+ &lt;span class="nb"&gt;:config&lt;/span&gt;
+ &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nv"&gt;auto-compile-on-save-mode&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="section" id="improving-file-load-time"&gt;
+&lt;h2&gt;Improving file-load time&lt;/h2&gt;
+&lt;p&gt;Another thing that bothered me was the time it took to navigate and
+load a file. File loading under windows took way too much time.
+Being used to vim, this was actually pretty frustrating.&lt;/p&gt;
+&lt;p&gt;You can use &lt;cite&gt;C-h v find-file-hook&lt;/cite&gt; to describe the list of file hooks used when opening files.
+It seemd git was the culprit here, and after some digging, I eventually found &lt;a class="reference external" href="http://stackoverflow.com/a/13256456/1293385"&gt;this answer&lt;/a&gt;
+which points to &lt;a class="reference external" href="http://stackoverflow.com/q/6724471/1293385"&gt;a question&lt;/a&gt; on StackOverflow with more info.&lt;/p&gt;
+&lt;p&gt;I'm not using git via Emacs, so the fix was pretty easy.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nb"&gt;when&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nf"&gt;eq&lt;/span&gt; &lt;span class="nv"&gt;system-type&lt;/span&gt; &lt;span class="ss"&gt;&amp;#39;windows-nt&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+ &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="k"&gt;progn&lt;/span&gt;
+   &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nv"&gt;remove-hook&lt;/span&gt; &lt;span class="ss"&gt;&amp;#39;find-file-hooks&lt;/span&gt; &lt;span class="ss"&gt;&amp;#39;vc-find-file-hook&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+   &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="k"&gt;setq&lt;/span&gt; &lt;span class="nv"&gt;vc-handled-backends&lt;/span&gt; &lt;span class="no"&gt;nil&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+   &lt;span class="p"&gt;))&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;I hope this saves someone (or the future me) some time.&lt;/p&gt;
+&lt;/div&gt;
+</summary><category term="emacs"></category><category term="note-to-self"></category></entry><entry><title>Exporting Emacs Org documents to Microsoft Word</title><link href="http://melleb.github.io/posts/2016/01/10/exporting-emacs-org-documents-to-microsoft-word/" rel="alternate"></link><published>2016-01-10T00:00:00+01:00</published><author><name>Melle Boersma</name></author><id>tag:melleb.github.io,2016-01-10:posts/2016/01/10/exporting-emacs-org-documents-to-microsoft-word/</id><summary type="html">&lt;p&gt;In order to export org-mode documents to Microsoft Word I took the following steps:&lt;/p&gt;
+&lt;ol class="arabic"&gt;
+&lt;li&gt;&lt;p class="first"&gt;Install Cygwin, and specifically the &lt;cite&gt;unzip&lt;/cite&gt; executable.
+(I read &lt;a class="reference external" href="http://permalink.gmane.org/gmane.emacs.orgmode/69882"&gt;Info-Zip&lt;/a&gt; seems to work, but haven't tried it myself.)&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p class="first"&gt;Set the preferred output format to &lt;cite&gt;docx&lt;/cite&gt; :&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nb"&gt;require&lt;/span&gt; &lt;span class="ss"&gt;&amp;#39;ox-odt&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="k"&gt;setq&lt;/span&gt; &lt;span class="nv"&gt;org-odt-preferred-output-format&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;docx&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+
+&lt;span class="c1"&gt;;; Add cygwin to the execpath on windows to be able to export to ODF&lt;/span&gt;
+&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nb"&gt;when&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nf"&gt;eq&lt;/span&gt; &lt;span class="nv"&gt;system-type&lt;/span&gt; &lt;span class="ss"&gt;&amp;#39;windows-nt&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+  &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nv"&gt;add-to-list&lt;/span&gt; &lt;span class="ss"&gt;&amp;#39;exec-path&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;C:\\cygwin64\\bin&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p class="first"&gt;Org-mode requires &lt;cite&gt;soffice&lt;/cite&gt; executable for document conversion, which is
+part of LibreOffice. I installed the &lt;a class="reference external" href="https://www.libreoffice.org/download/portable-versions/"&gt;portable version&lt;/a&gt; of LibreOffice.
+Be sure to add the &lt;cite&gt;App\libreoffice\program&lt;/cite&gt; directory to your &lt;cite&gt;PATH&lt;/cite&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p class="first"&gt;Finally, restart Emacs.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+</summary><category term="emacs"></category><category term="org-mode"></category><category term="note-to-self"></category></entry><entry><title>Showing inline images in Emacs on Windows</title><link href="http://melleb.github.io/posts/2016/01/05/showing-inline-images-in-emacs-on-windows/" rel="alternate"></link><published>2016-01-05T00:00:00+01:00</published><author><name>Melle Boersma</name></author><id>tag:melleb.github.io,2016-01-05:posts/2016/01/05/showing-inline-images-in-emacs-on-windows/</id><summary type="html">&lt;p&gt;For me &lt;cite&gt;M-x&lt;/cite&gt; &lt;cite&gt;org-display-inline-images&lt;/cite&gt; didn't work on windows.
+The error I get is: &lt;cite&gt;&amp;quot;No images to display inline&amp;quot;&lt;/cite&gt;&lt;/p&gt;
+&lt;p&gt;Googling gave me &lt;a class="reference external" href="https://www.gnu.org/software/emacs/manual/html_node/efaq-w32/Image-support.html#Image-support"&gt;this&lt;/a&gt;, but that didn't really help...&lt;/p&gt;
+&lt;p&gt;Eventually the &lt;a class="reference external" href="http://ftp.snt.utwente.nl/pub/software/gnu/emacs/windows/README"&gt;README&lt;/a&gt; in the Emacs downloads folder was more helpful:&lt;/p&gt;
+&lt;pre class="literal-block"&gt;
+Emacs can also support some other image formats with appropriate
+libraries.  These libraries are all available on the following sites:
+
+1. http://sourceforge.net/projects/ezwinports/files/
+   -- leaner, more up-to-date builds, only for 32-bit Emacs
+2. http://www.gtk.org/download/win32.php
+   http://www.gtk.org/download/win64.php
+   -- the GTK project site; offers much fatter builds, but includes
+      64-bit DLLs (from the 2nd URL)
+3. GnuWin32 project -- very old builds, not recommended
+&lt;/pre&gt;
+&lt;p&gt;So in order to view inline images you should get the ezwinports of
+&lt;a class="reference external" href="http://sourceforge.net/projects/ezwinports/files/libpng-1.6.12-w32-bin.zip/download"&gt;libpng&lt;/a&gt;, &lt;a class="reference external" href="http://sourceforge.net/projects/ezwinports/files/giflib-5.1.0-w32-bin.zip/download"&gt;giflib&lt;/a&gt;, &lt;a class="reference external" href="http://sourceforge.net/projects/ezwinports/files/jpeg-v9a-w32-bin.zip/download"&gt;jpeg&lt;/a&gt; and &lt;a class="reference external" href="http://sourceforge.net/projects/ezwinports/files/librsvg-2.40.1-2-w32-bin.zip/download"&gt;librsvg&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Unzip these files and add the directories to PATH.
+After this, &lt;cite&gt;org-display-inline-images&lt;/cite&gt; seemd to work for me.&lt;/p&gt;
+&lt;p&gt;Tested with Emacs 24.5, org-mode 8.3.3 on windows 7.&lt;/p&gt;
+&lt;p&gt;Hope this saves somebody some time.&lt;/p&gt;
+</summary><category term="emacs"></category><category term="org-mode"></category><category term="note-to-self"></category></entry></feed>

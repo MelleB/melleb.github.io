@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+          <title>Melle Boersma</title>
+        <meta charset="utf-8" />
+	<link rel="stylesheet" href="http://melleb.github.io/assets/css/main.css" />
+        <link href="http://melleb.github.io/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="Melle Boersma Full Atom Feed" />
+        <link href="http://melleb.github.io/feeds/posts.atom.xml" type="application/atom+xml" rel="alternate" title="Melle Boersma Categories Atom Feed" />
+
+
+
+    <meta name="tags" content="ubuntu" />
+</head>
+
+<body id="index" class="home">
+        <header id="banner" class="body">
+                <h1><a href="http://melleb.github.io/">Melle Boersma <strong></strong></a></h1>
+        </header><!-- /#banner -->
+        <nav id="menu"><ul>
+        </ul></nav><!-- /#menu -->
+<section id="content" class="body article">
+  <header>
+    <h2 class="entry-title">
+      <a href="http://melleb.github.io/posts/2016/06/19/enable-internal-bluetooth-bcm2046b1-adapter-on-ubuntu/" rel="bookmark"
+         title="Permalink to Enable internal bluetooth BCM2046(B1) adapter on Ubuntu">Enable internal bluetooth BCM2046(B1) adapter on Ubuntu</a></h2>
+  </header>
+  <time class="published" title="19-06-2016">
+    19 Jun 16
+  </time>
+  <div class="entry-content">
+    <p>For some reason I couldn't get my bluetooth to work in ubuntu 16.04 on
+my old Dell Vostro 3700. These are the steps I took in order to make
+it work. A note to my future self.</p>
+<p><tt class="docutils literal">lsusb</tt> shows that there is indeed a Bluetooth device:</p>
+<blockquote>
+Bus 001 Device 003: ID 0a5c:4500 Broadcom Corp. BCM2046B1 USB 2.0
+Hub (part of BCM2046 Bluetooth)</blockquote>
+<p>First diagnosis: <tt class="docutils literal">sudo service bluetooth status</tt> showed a failed
+process. After running <tt class="docutils literal">sudo modprobe <span class="pre">-r</span> btusb; sudo modprobe
+btusb</tt>, I could start the bluetooth service without failure. Now the
+bluetooth service was enabled, but no adapters were found.</p>
+<p>I remembered disabling the bluetooth adapter under windows when I got
+the laptop. I figured I didn't need it back then. This seemed to
+be essential, and something the linux drivers didn't support.
+According to linux, everyting was enabled.</p>
+<p>Several fora mention extraction of linux drivers from their Windows
+counterparts. I couldn't get this to work, because I couldn't
+determine which driver to use.</p>
+<p>I thought about installing windows side-by-side with Ubuntu for a
+while in order to enable the bluetooth driver again. But messing
+around with partitions, volumes and bootloaders seemed way too much
+work just to enable bluetooth. I figured I could try running a Windows
+VM, and enable the adapter in there. A long shot, but it worked!</p>
+<p>I performed the following steps:</p>
+<ol class="arabic">
+<li><p class="first">Install the bluetooth module for PulseAudio: <tt class="docutils literal">sudo <span class="pre">apt-get</span> install
+<span class="pre">pulseaudio-module-bluetooth</span></tt>.</p>
+</li>
+<li><p class="first">Install virtualbox and load a windows VM Installing virtual box is
+as simple as <tt class="docutils literal">sudo <span class="pre">apt-get</span> install virtualbox</tt>. You also need to
+download/install the <a class="reference external" href="https://www.virtualbox.org/wiki/Downloads">virtualbox extension pack</a> for USB 2.0
+support.</p>
+<p>Windows VM's are easy to come by these days, since Microsoft makes
+them publicly available for testing web development efforts against
+older MSIE versions. I got the <a class="reference external" href="https://developer.microsoft.com/en-us/microsoft-edge/tools/vms/linux/">IE8 on Win7</a> version. Load the VM.</p>
+</li>
+<li><p class="first">Next, add yourself to the <tt class="docutils literal">vboxusers</tt> group <tt class="docutils literal">sudo usermod <span class="pre">-a</span> <span class="pre">-G</span>
+vboxusers $USER</tt>. Don't forget to logout and login again.</p>
+</li>
+<li><p class="first">Add all your USB devices to the VirtualBox Go to settings &gt; USB.
+Enable usb 2.0 and add all devices. In my case I wasn't sure which
+device was the bluetooth device, but I read on the <a class="reference external" href="https://forums.linuxmint.com/viewtopic.php?t=56621">LinuxMint
+forum</a> that changing the mode of the wireless adapter made the
+bluetooth adapter show up. So I had a hunch where to look.</p>
+</li>
+<li><p class="first">Start the VM, download the bluetooth drivers Download the drivers
+for the bluetooth dongle. In my case I entered my laptop serial
+number on the dell website and I got the <em>wireless</em> driver for
+windows 7. Make sure you download the right platform, which for me
+was 32-bit.</p>
+</li>
+<li><p class="first">Install the drivers in the new VM.</p>
+</li>
+</ol>
+<p>After this my bluetooth adapter works. I might still need to enable
+the bluetooth service using modprobe as described above. But at least
+my bluetooth adapter is recognized.</p>
+
+  </div><!-- /.entry-content -->
+</section>
+        <footer id="contentinfo" class="body">
+                <address id="about" class="vcard body">
+                Proudly powered by <a href="http://getpelican.com/">Pelican</a>.
+
+                </address><!-- /#about -->
+        </footer><!-- /#contentinfo -->
+</body>
+</html>

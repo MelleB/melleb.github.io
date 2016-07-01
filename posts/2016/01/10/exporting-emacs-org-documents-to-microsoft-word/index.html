@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+          <title>Melle Boersma</title>
+        <meta charset="utf-8" />
+	<link rel="stylesheet" href="http://melleb.github.io/assets/css/main.css" />
+        <link href="http://melleb.github.io/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="Melle Boersma Full Atom Feed" />
+        <link href="http://melleb.github.io/feeds/posts.atom.xml" type="application/atom+xml" rel="alternate" title="Melle Boersma Categories Atom Feed" />
+
+
+
+    <meta name="tags" content="emacs" />
+    <meta name="tags" content="org-mode" />
+    <meta name="tags" content="note-to-self" />
+</head>
+
+<body id="index" class="home">
+        <header id="banner" class="body">
+                <h1><a href="http://melleb.github.io/">Melle Boersma <strong></strong></a></h1>
+        </header><!-- /#banner -->
+        <nav id="menu"><ul>
+        </ul></nav><!-- /#menu -->
+<section id="content" class="body article">
+  <header>
+    <h2 class="entry-title">
+      <a href="http://melleb.github.io/posts/2016/01/10/exporting-emacs-org-documents-to-microsoft-word/" rel="bookmark"
+         title="Permalink to Exporting Emacs Org documents to Microsoft Word">Exporting Emacs Org documents to Microsoft Word</a></h2>
+  </header>
+  <time class="published" title="10-01-2016">
+    10 Jan 16
+  </time>
+  <div class="entry-content">
+    <p>In order to export org-mode documents to Microsoft Word I took the following steps:</p>
+<ol class="arabic">
+<li><p class="first">Install Cygwin, and specifically the <cite>unzip</cite> executable.
+(I read <a class="reference external" href="http://permalink.gmane.org/gmane.emacs.orgmode/69882">Info-Zip</a> seems to work, but haven't tried it myself.)</p>
+</li>
+<li><p class="first">Set the preferred output format to <cite>docx</cite> :</p>
+<div class="highlight"><pre><span></span><span class="p">(</span><span class="nb">require</span> <span class="ss">&#39;ox-odt</span><span class="p">)</span>
+<span class="p">(</span><span class="k">setq</span> <span class="nv">org-odt-preferred-output-format</span> <span class="s">&quot;docx&quot;</span><span class="p">)</span>
+
+<span class="c1">;; Add cygwin to the execpath on windows to be able to export to ODF</span>
+<span class="p">(</span><span class="nb">when</span> <span class="p">(</span><span class="nf">eq</span> <span class="nv">system-type</span> <span class="ss">&#39;windows-nt</span><span class="p">)</span>
+  <span class="p">(</span><span class="nv">add-to-list</span> <span class="ss">&#39;exec-path</span> <span class="s">&quot;C:\\cygwin64\\bin&quot;</span><span class="p">))</span>
+</pre></div>
+</li>
+<li><p class="first">Org-mode requires <cite>soffice</cite> executable for document conversion, which is
+part of LibreOffice. I installed the <a class="reference external" href="https://www.libreoffice.org/download/portable-versions/">portable version</a> of LibreOffice.
+Be sure to add the <cite>App\libreoffice\program</cite> directory to your <cite>PATH</cite></p>
+</li>
+<li><p class="first">Finally, restart Emacs.</p>
+</li>
+</ol>
+
+  </div><!-- /.entry-content -->
+</section>
+        <footer id="contentinfo" class="body">
+                <address id="about" class="vcard body">
+                Proudly powered by <a href="http://getpelican.com/">Pelican</a>.
+
+                </address><!-- /#about -->
+        </footer><!-- /#contentinfo -->
+</body>
+</html>

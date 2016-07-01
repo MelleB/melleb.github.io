@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+          <title>Melle Boersma</title>
+        <meta charset="utf-8" />
+	<link rel="stylesheet" href="http://melleb.github.io/assets/css/main.css" />
+        <link href="http://melleb.github.io/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="Melle Boersma Full Atom Feed" />
+        <link href="http://melleb.github.io/feeds/posts.atom.xml" type="application/atom+xml" rel="alternate" title="Melle Boersma Categories Atom Feed" />
+
+
+
+    <meta name="tags" content="emacs" />
+    <meta name="tags" content="org-mode" />
+    <meta name="tags" content="note-to-self" />
+</head>
+
+<body id="index" class="home">
+        <header id="banner" class="body">
+                <h1><a href="http://melleb.github.io/">Melle Boersma <strong></strong></a></h1>
+        </header><!-- /#banner -->
+        <nav id="menu"><ul>
+        </ul></nav><!-- /#menu -->
+<section id="content" class="body article">
+  <header>
+    <h2 class="entry-title">
+      <a href="http://melleb.github.io/posts/2016/01/05/showing-inline-images-in-emacs-on-windows/" rel="bookmark"
+         title="Permalink to Showing inline images in Emacs on Windows">Showing inline images in Emacs on Windows</a></h2>
+  </header>
+  <time class="published" title="05-01-2016">
+    05 Jan 16
+  </time>
+  <div class="entry-content">
+    <p>For me <cite>M-x</cite> <cite>org-display-inline-images</cite> didn't work on windows.
+The error I get is: <cite>&quot;No images to display inline&quot;</cite></p>
+<p>Googling gave me <a class="reference external" href="https://www.gnu.org/software/emacs/manual/html_node/efaq-w32/Image-support.html#Image-support">this</a>, but that didn't really help...</p>
+<p>Eventually the <a class="reference external" href="http://ftp.snt.utwente.nl/pub/software/gnu/emacs/windows/README">README</a> in the Emacs downloads folder was more helpful:</p>
+<pre class="literal-block">
+Emacs can also support some other image formats with appropriate
+libraries.  These libraries are all available on the following sites:
+
+1. http://sourceforge.net/projects/ezwinports/files/
+   -- leaner, more up-to-date builds, only for 32-bit Emacs
+2. http://www.gtk.org/download/win32.php
+   http://www.gtk.org/download/win64.php
+   -- the GTK project site; offers much fatter builds, but includes
+      64-bit DLLs (from the 2nd URL)
+3. GnuWin32 project -- very old builds, not recommended
+</pre>
+<p>So in order to view inline images you should get the ezwinports of
+<a class="reference external" href="http://sourceforge.net/projects/ezwinports/files/libpng-1.6.12-w32-bin.zip/download">libpng</a>, <a class="reference external" href="http://sourceforge.net/projects/ezwinports/files/giflib-5.1.0-w32-bin.zip/download">giflib</a>, <a class="reference external" href="http://sourceforge.net/projects/ezwinports/files/jpeg-v9a-w32-bin.zip/download">jpeg</a> and <a class="reference external" href="http://sourceforge.net/projects/ezwinports/files/librsvg-2.40.1-2-w32-bin.zip/download">librsvg</a></p>
+<p>Unzip these files and add the directories to PATH.
+After this, <cite>org-display-inline-images</cite> seemd to work for me.</p>
+<p>Tested with Emacs 24.5, org-mode 8.3.3 on windows 7.</p>
+<p>Hope this saves somebody some time.</p>
+
+  </div><!-- /.entry-content -->
+</section>
+        <footer id="contentinfo" class="body">
+                <address id="about" class="vcard body">
+                Proudly powered by <a href="http://getpelican.com/">Pelican</a>.
+
+                </address><!-- /#about -->
+        </footer><!-- /#contentinfo -->
+</body>
+</html>

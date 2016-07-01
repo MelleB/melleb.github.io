@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+          <title>Melle Boersma</title>
+        <meta charset="utf-8" />
+	<link rel="stylesheet" href="http://melleb.github.io/assets/css/main.css" />
+        <link href="http://melleb.github.io/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="Melle Boersma Full Atom Feed" />
+        <link href="http://melleb.github.io/feeds/posts.atom.xml" type="application/atom+xml" rel="alternate" title="Melle Boersma Categories Atom Feed" />
+
+
+
+    <meta name="tags" content="emacs" />
+    <meta name="tags" content="python" />
+</head>
+
+<body id="index" class="home">
+        <header id="banner" class="body">
+                <h1><a href="http://melleb.github.io/">Melle Boersma <strong></strong></a></h1>
+        </header><!-- /#banner -->
+        <nav id="menu"><ul>
+        </ul></nav><!-- /#menu -->
+<section id="content" class="body article">
+  <header>
+    <h2 class="entry-title">
+      <a href="http://melleb.github.io/posts/2016/06/24/highlight-python-class-and-method-names/" rel="bookmark"
+         title="Permalink to Highlight python class and method names">Highlight python class and method names</a></h2>
+  </header>
+  <time class="published" title="24-06-2016">
+    24 Jun 16
+  </time>
+  <div class="entry-content">
+    <p>Recently I began working on a personal python-based project. Having
+worked with python in the past, it was a welcoming experience. I
+wasn't really used to a indent-sensitive language. And I figured I
+could use some visual aids to quickly tell class and method
+definitions apart when scanning source files.</p>
+<p>In my Emacs set-up I use the <a class="reference external" href="https://github.com/fniessen/emacs-leuven-theme">leuven theme</a>. It's quite a minimal
+theme, which seems especially geared towards the use of org-mode. For
+non-emacs converts, one of the benefits of the Emacs display system is
+that you can have different font faces in a single document. For
+instance, the leuven theme uses a bigger font size for level 1
+headings, and gives each level a different background color.</p>
+<p>I figured I wanted something like that for class and method
+definitions. After some fiddeling around, I'm satisfied with the
+following snippet:</p>
+<div class="highlight"><pre><span></span><span class="p">(</span><span class="nv">font-lock-add-keywords</span> <span class="ss">&#39;python-mode</span>
+ <span class="o">&#39;</span><span class="p">((</span><span class="s">&quot;^\s*\\(def\s*\\)\\(.*\\)\\((.*):.*\xa\\)&quot;</span> <span class="c1">; Highlight &quot;def my_func(param):&quot;</span>
+    <span class="p">(</span><span class="mi">1</span> <span class="o">&#39;</span><span class="p">(</span><span class="nb">:inherit</span> <span class="nv">font-lock-keyword-face</span> <span class="nb">:background</span> <span class="s">&quot;#F3F3F3&quot;</span><span class="p">))</span>
+    <span class="p">(</span><span class="mi">2</span> <span class="o">&#39;</span><span class="p">(</span><span class="nb">:inherit</span> <span class="nv">font-lock-function-name-face</span> <span class="nb">:background</span> <span class="s">&quot;#F3F3F3&quot;</span> <span class="nb">:weight</span> <span class="nv">bold</span><span class="p">))</span>
+    <span class="p">(</span><span class="mi">3</span> <span class="o">&#39;</span><span class="p">(</span><span class="nb">:background</span> <span class="s">&quot;#F3F3F3&quot;</span><span class="p">))</span>
+    <span class="p">)</span>
+   <span class="p">(</span><span class="s">&quot;^\s*\\(class\s*\\)\\(.*\\)\\((.*):.*\xa\\)&quot;</span> <span class="c1">; Highlight &quot;class MyClass(Base):&quot;</span>
+    <span class="p">(</span><span class="mi">1</span> <span class="o">&#39;</span><span class="p">(</span><span class="nb">:inherit</span> <span class="nv">font-lock-keyword-face</span> <span class="nb">:background</span> <span class="s">&quot;#EEEEEE&quot;</span> <span class="nb">:height</span> <span class="mf">1.4</span><span class="p">))</span>
+    <span class="p">(</span><span class="mi">2</span> <span class="o">&#39;</span><span class="p">(</span><span class="nb">:inherit</span> <span class="nv">font-lock-function-name-face</span> <span class="nb">:background</span> <span class="s">&quot;#EEEEEE&quot;</span> <span class="nb">:height</span> <span class="mf">1.4</span> <span class="nb">:weight</span> <span class="nv">bold</span><span class="p">))</span>
+    <span class="p">(</span><span class="mi">3</span> <span class="o">&#39;</span><span class="p">(</span><span class="nb">:background</span> <span class="s">&quot;#EEEEEE&quot;</span> <span class="nb">:height</span> <span class="mf">1.4</span><span class="p">))</span>
+    <span class="p">)</span>
+   <span class="p">(</span><span class="s">&quot;^\s*\\(class\s*\\)\\(.*\\)\\(:.*\xa\\)&quot;</span>  <span class="c1">; Highlight &quot;class MyClass:&quot;</span>
+    <span class="p">(</span><span class="mi">1</span> <span class="o">&#39;</span><span class="p">(</span><span class="nb">:inherit</span> <span class="nv">font-lock-keyword-face</span> <span class="nb">:background</span> <span class="s">&quot;#EEEEEE&quot;</span> <span class="nb">:height</span> <span class="mf">1.4</span><span class="p">))</span>
+    <span class="p">(</span><span class="mi">2</span> <span class="o">&#39;</span><span class="p">(</span><span class="nb">:inherit</span> <span class="nv">font-lock-function-name-face</span> <span class="nb">:background</span> <span class="s">&quot;#EEEEEE&quot;</span> <span class="nb">:height</span> <span class="mf">1.4</span> <span class="nb">:weight</span> <span class="nv">bold</span><span class="p">))</span>
+    <span class="p">(</span><span class="mi">3</span> <span class="o">&#39;</span><span class="p">(</span><span class="nb">:background</span> <span class="s">&quot;#EEEEEE&quot;</span> <span class="nb">:height</span> <span class="mf">1.4</span><span class="p">))</span>
+    <span class="p">)</span>
+   <span class="p">))</span>
+</pre></div>
+<p>With some more work I could probably reduce this to a single regex. Oh
+well. Anyway, here's a screenshot with the result:</p>
+<img alt="Highlight python source code" src="http://melleb.github.io/posts/2016/06/24/highlight-python-class-and-method-names/007-highlight-class-method-defenitions.png" style="width: 851px; height: 700px;" />
+<p>I opened an <a class="reference external" href="https://github.com/fniessen/emacs-leuven-theme/issues/29">issue</a> on the Leuven Theme github repo, to see if others
+like this as well.</p>
+
+  </div><!-- /.entry-content -->
+</section>
+        <footer id="contentinfo" class="body">
+                <address id="about" class="vcard body">
+                Proudly powered by <a href="http://getpelican.com/">Pelican</a>.
+
+                </address><!-- /#about -->
+        </footer><!-- /#contentinfo -->
+</body>
+</html>

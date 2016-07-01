@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+          <title>Melle Boersma</title>
+        <meta charset="utf-8" />
+	<link rel="stylesheet" href="http://melleb.github.io/assets/css/main.css" />
+        <link href="http://melleb.github.io/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="Melle Boersma Full Atom Feed" />
+        <link href="http://melleb.github.io/feeds/posts.atom.xml" type="application/atom+xml" rel="alternate" title="Melle Boersma Categories Atom Feed" />
+
+
+
+    <meta name="tags" content="emacs" />
+    <meta name="tags" content="note-to-self" />
+</head>
+
+<body id="index" class="home">
+        <header id="banner" class="body">
+                <h1><a href="http://melleb.github.io/">Melle Boersma <strong></strong></a></h1>
+        </header><!-- /#banner -->
+        <nav id="menu"><ul>
+        </ul></nav><!-- /#menu -->
+<section id="content" class="body article">
+  <header>
+    <h2 class="entry-title">
+      <a href="http://melleb.github.io/posts/2016/02/01/speeding-up-emacs-start-up-and-file-loading/" rel="bookmark"
+         title="Permalink to Speeding up Emacs start-up and file loading">Speeding up Emacs start-up and file loading</a></h2>
+  </header>
+  <time class="published" title="01-02-2016">
+    01 Feb 16
+  </time>
+  <div class="entry-content">
+    <p>In this post I describe the steps I undertook to speed-up my Emacs under Windows 7.</p>
+<div class="section" id="improving-start-up-time">
+<h2>Improving start-up time</h2>
+<p>My initial experience of Emacs' start-up time on Windows wasn't great.
+After installing a couple of packages I noticed things became a bit slower.
+I was using John Wiegley's <a class="reference external" href="https://github.com/jwiegley/use-package">use-package</a> plugin for managing packages, this
+kept everything nice and modular, however being an novice whom only recently
+converted to the church of Emacs, I knew little about the things actually
+happening at start-up time.</p>
+<p>To analyse where time is spent during Emacs' start-up, I installed the
+<a class="reference external" href="https://github.com/jschaf/esup">Emacs Start Up Profiler</a> (esup) from Melpa using</p>
+<div class="highlight"><pre><span></span><span class="p">(</span><span class="nb">use-package</span> <span class="nv">esup</span>
+ <span class="nb">:defer</span> <span class="no">t</span>
+ <span class="nb">:ensure</span> <span class="no">t</span><span class="p">)</span>
+</pre></div>
+<p>You can check you current start-up time and extra info by running the <cite>esup</cite> (<tt class="docutils literal"><span class="pre">M-x</span> esup</tt>)
+command provided by the package. This opens a new Emacs window and measures start-up time of
+both the window and it's packages. You get a nice report in your current Emacs window.</p>
+<p>After running these I noticed several most of the packges were loaded during
+Emacs start-up, which wasn't really necessary. By adding the <tt class="docutils literal">:defer t</tt> option
+to my <tt class="docutils literal"><span class="pre">use-package</span></tt> statements, package loading was deferred until the packages
+were actually required. Already I noticed quite a speed-up. Running the <cite>esup</cite> command again
+confirmed this.</p>
+<p>Another trick I used was the increase of the threshold for garbage collection.</p>
+<div class="highlight"><pre><span></span><span class="p">(</span><span class="k">setq</span> <span class="nv">gc-cons-threshold</span> <span class="mi">100000000</span><span class="p">)</span>
+</pre></div>
+<p>Finally I used the <cite>auto-compile</cite> to - wait for it - auto compile <cite>.el</cite> files on save.</p>
+<div class="highlight"><pre><span></span><span class="p">(</span><span class="nb">use-package</span> <span class="nv">auto-compile</span>
+ <span class="nb">:ensure</span> <span class="no">t</span>
+ <span class="nb">:config</span>
+ <span class="p">(</span><span class="nv">auto-compile-on-save-mode</span><span class="p">))</span>
+</pre></div>
+</div>
+<div class="section" id="improving-file-load-time">
+<h2>Improving file-load time</h2>
+<p>Another thing that bothered me was the time it took to navigate and
+load a file. File loading under windows took way too much time.
+Being used to vim, this was actually pretty frustrating.</p>
+<p>You can use <cite>C-h v find-file-hook</cite> to describe the list of file hooks used when opening files.
+It seemd git was the culprit here, and after some digging, I eventually found <a class="reference external" href="http://stackoverflow.com/a/13256456/1293385">this answer</a>
+which points to <a class="reference external" href="http://stackoverflow.com/q/6724471/1293385">a question</a> on StackOverflow with more info.</p>
+<p>I'm not using git via Emacs, so the fix was pretty easy.</p>
+<div class="highlight"><pre><span></span><span class="p">(</span><span class="nb">when</span> <span class="p">(</span><span class="nf">eq</span> <span class="nv">system-type</span> <span class="ss">&#39;windows-nt</span><span class="p">)</span>
+ <span class="p">(</span><span class="k">progn</span>
+   <span class="p">(</span><span class="nv">remove-hook</span> <span class="ss">&#39;find-file-hooks</span> <span class="ss">&#39;vc-find-file-hook</span><span class="p">)</span>
+   <span class="p">(</span><span class="k">setq</span> <span class="nv">vc-handled-backends</span> <span class="no">nil</span><span class="p">)</span>
+   <span class="p">))</span>
+</pre></div>
+<p>I hope this saves someone (or the future me) some time.</p>
+</div>
+
+  </div><!-- /.entry-content -->
+</section>
+        <footer id="contentinfo" class="body">
+                <address id="about" class="vcard body">
+                Proudly powered by <a href="http://getpelican.com/">Pelican</a>.
+
+                </address><!-- /#about -->
+        </footer><!-- /#contentinfo -->
+</body>
+</html>

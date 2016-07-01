@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+          <title>Melle Boersma</title>
+        <meta charset="utf-8" />
+	<link rel="stylesheet" href="http://melleb.github.io/assets/css/main.css" />
+        <link href="http://melleb.github.io/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="Melle Boersma Full Atom Feed" />
+        <link href="http://melleb.github.io/feeds/posts.atom.xml" type="application/atom+xml" rel="alternate" title="Melle Boersma Categories Atom Feed" />
+
+
+
+    <meta name="tags" content="ubuntu" />
+    <meta name="tags" content="xfce" />
+    <meta name="tags" content="note-to-self" />
+</head>
+
+<body id="index" class="home">
+        <header id="banner" class="body">
+                <h1><a href="http://melleb.github.io/">Melle Boersma <strong></strong></a></h1>
+        </header><!-- /#banner -->
+        <nav id="menu"><ul>
+        </ul></nav><!-- /#menu -->
+<section id="content" class="body article">
+  <header>
+    <h2 class="entry-title">
+      <a href="http://melleb.github.io/posts/2016/06/28/fixing-volume-buttons-under-xfce/" rel="bookmark"
+         title="Permalink to Fixing volume buttons under XFCE">Fixing volume buttons under XFCE</a></h2>
+  </header>
+  <time class="published" title="28-06-2016">
+    28 Jun 16
+  </time>
+  <div class="entry-content">
+    <p>Under XFCE my keyboard's volume buttons didn't work.
+The start/pause, stop, forward and backward buttons were controlling
+Rhythmbox correctly, but the volume buttons weren't configured.</p>
+<p>You have to add the shortcuts manually in keyboard application shortcuts
+(Settings Manager &gt; Keyboard &gt; Application Shortcuts).</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="48%" />
+<col width="52%" />
+</colgroup>
+<thead valign="bottom">
+<tr><th class="head">Shortcut</th>
+<th class="head">Command</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr><td>XF86AudioLowerVolume</td>
+<td>amixer set Master 5%+</td>
+</tr>
+<tr><td>XF86AudioRaiseVolume</td>
+<td>amixer set Master 5%-</td>
+</tr>
+<tr><td>XF86AudioMute</td>
+<td>amixer set Master toggle</td>
+</tr>
+</tbody>
+</table>
+
+  </div><!-- /.entry-content -->
+</section>
+        <footer id="contentinfo" class="body">
+                <address id="about" class="vcard body">
+                Proudly powered by <a href="http://getpelican.com/">Pelican</a>.
+
+                </address><!-- /#about -->
+        </footer><!-- /#contentinfo -->
+</body>
+</html>

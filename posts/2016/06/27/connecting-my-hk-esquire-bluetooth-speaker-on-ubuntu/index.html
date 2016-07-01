@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+          <title>Melle Boersma</title>
+        <meta charset="utf-8" />
+	<link rel="stylesheet" href="http://melleb.github.io/assets/css/main.css" />
+        <link href="http://melleb.github.io/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="Melle Boersma Full Atom Feed" />
+        <link href="http://melleb.github.io/feeds/posts.atom.xml" type="application/atom+xml" rel="alternate" title="Melle Boersma Categories Atom Feed" />
+
+
+
+    <meta name="tags" content="ubuntu" />
+    <meta name="tags" content="note-to-self" />
+</head>
+
+<body id="index" class="home">
+        <header id="banner" class="body">
+                <h1><a href="http://melleb.github.io/">Melle Boersma <strong></strong></a></h1>
+        </header><!-- /#banner -->
+        <nav id="menu"><ul>
+        </ul></nav><!-- /#menu -->
+<section id="content" class="body article">
+  <header>
+    <h2 class="entry-title">
+      <a href="http://melleb.github.io/posts/2016/06/27/connecting-my-hk-esquire-bluetooth-speaker-on-ubuntu/" rel="bookmark"
+         title="Permalink to Connecting my HK Esquire bluetooth speaker on Ubuntu">Connecting my HK Esquire bluetooth speaker on Ubuntu</a></h2>
+  </header>
+  <time class="published" title="27-06-2016">
+    27 Jun 16
+  </time>
+  <div class="entry-content">
+    <p>Some time ago I got a <a class="reference external" href="http://www.harmankardon.com/bluetooth-speakers/ESQUIRE.html">HK Esquire Bluetooth Speaker</a> which is
+actually a really nice, solid speaker. Pairing and connecting is easy
+under Windows and Mac OS, but I couldn't get it to work on Ubuntu.</p>
+<p>First, <a class="reference external" href="http://melleb.github.io/posts/2016/06/19/enable-internal-bluetooth-bcm2046b1-adapter-on-ubuntu/">I had some trouble getting my bluetooth adapter to work</a>,
+after that the pairing worked, but I couldn't get the sound to work.
+After trying several solutions metioned on different fora, the
+solution was much simpler that I anticipated.</p>
+<p>Part of the solution was to install the bluetooth module for
+PulseAudio using</p>
+<div class="highlight"><pre><span></span>sudo apt-get install pulseaudio-module-bluetooth
+</pre></div>
+<p>But that alone didn't fix the issue. After connecting to the speaker,
+you need to kill/reset the pulseaudio deamon using</p>
+<div class="highlight"><pre><span></span>pulseaudio -k
+</pre></div>
+<p>For some reason this makes the speaker show up in PulseAudio Volume
+Control. My guess is that it resets the list of output devices. But I
+might be wrong.</p>
+<p>I got to choose between two audio profiles: <cite>High Fidelity Playback
+(A2DP Sink)</cite> and <cite>High Fidelity Headset (HSP/HFP)</cite>. The sound output
+of the High Fidelity Heaset profile was crap, which might be expected.
+So I tried using the A2DP sink. It didn't work the first time, but
+after trying it a week later it worked. Yay.</p>
+
+  </div><!-- /.entry-content -->
+</section>
+        <footer id="contentinfo" class="body">
+                <address id="about" class="vcard body">
+                Proudly powered by <a href="http://getpelican.com/">Pelican</a>.
+
+                </address><!-- /#about -->
+        </footer><!-- /#contentinfo -->
+</body>
+</html>

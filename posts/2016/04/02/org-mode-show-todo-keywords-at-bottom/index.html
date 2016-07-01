@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+          <title>Melle Boersma</title>
+        <meta charset="utf-8" />
+	<link rel="stylesheet" href="http://melleb.github.io/assets/css/main.css" />
+        <link href="http://melleb.github.io/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="Melle Boersma Full Atom Feed" />
+        <link href="http://melleb.github.io/feeds/posts.atom.xml" type="application/atom+xml" rel="alternate" title="Melle Boersma Categories Atom Feed" />
+
+
+
+    <meta name="tags" content="emacs" />
+    <meta name="tags" content="org-mode" />
+    <meta name="tags" content="note-to-self" />
+</head>
+
+<body id="index" class="home">
+        <header id="banner" class="body">
+                <h1><a href="http://melleb.github.io/">Melle Boersma <strong></strong></a></h1>
+        </header><!-- /#banner -->
+        <nav id="menu"><ul>
+        </ul></nav><!-- /#menu -->
+<section id="content" class="body article">
+  <header>
+    <h2 class="entry-title">
+      <a href="http://melleb.github.io/posts/2016/04/02/org-mode-show-todo-keywords-at-bottom/" rel="bookmark"
+         title="Permalink to Org-mode show TODO keywords at bottom">Org-mode show TODO keywords at bottom</a></h2>
+  </header>
+  <time class="published" title="02-04-2016">
+    02 Apr 16
+  </time>
+  <div class="entry-content">
+    <p>In org-mode you can quickly toggle todo states when you define shortcuts.
+For instance, my <cite>init.el</cite> contains the following TODO keywords:</p>
+<div class="highlight"><pre><span></span><span class="p">(</span><span class="k">setq</span> <span class="nv">org-todo-keywords</span>
+       <span class="o">&#39;</span><span class="p">((</span><span class="nv">sequence</span> <span class="s">&quot;TODO(t)&quot;</span> <span class="s">&quot;NEXT(n)&quot;</span> <span class="s">&quot;IN-PROGRESS(p)&quot;</span> <span class="s">&quot;WAITING(w)&quot;</span>
+                   <span class="s">&quot;|&quot;</span> <span class="s">&quot;DEFERED(f)&quot;</span> <span class="s">&quot;DONE(d)&quot;</span> <span class="s">&quot;CANCELLED(c@)&quot;</span><span class="p">)))</span>
+</pre></div>
+<p>This allows me to tap e.g. <tt class="docutils literal"><span class="pre">C-t</span> n</tt> on a heading to change its status to
+NEXT or <tt class="docutils literal"><span class="pre">C-t</span> c</tt> to set it's status to CANCELLED and enter a reason.
+For more info, see <a class="reference external" href="http://orgmode.org/manual/Fast-access-to-TODO-states.html">Fast access to TODO states</a> in the org-mode manual.</p>
+<p>By default these pop-up in the other window, in my case this is often a
+document which I have open in a  vertical split.
+I wanted these top pop-up at the bottom of the screen.
+By using the <a class="reference external" href="https://github.com/m2ym/popwin-el">popwin</a> package I was able to pull this off by adding the following lines to my config.</p>
+<div class="highlight"><pre><span></span><span class="p">(</span><span class="nb">require</span> <span class="ss">&#39;popwin</span><span class="p">)</span>
+<span class="p">(</span><span class="k">setq</span> <span class="nv">display-buffer-function</span> <span class="ss">&#39;popwin:display-buffer</span><span class="p">)</span>
+<span class="p">(</span><span class="nv">add-to-list</span> <span class="ss">&#39;popwin:special-display-config</span> <span class="o">&#39;</span><span class="p">(</span><span class="s">&quot; *Org todo*&quot;</span><span class="p">))</span>
+<span class="p">(</span><span class="nv">popwin-mode</span> <span class="mi">1</span><span class="p">)</span>
+</pre></div>
+<p>The trick was to set the display-buffer-function to use the popwin implementation.</p>
+<p>Hopefully this saves someone a bit of time.</p>
+
+  </div><!-- /.entry-content -->
+</section>
+        <footer id="contentinfo" class="body">
+                <address id="about" class="vcard body">
+                Proudly powered by <a href="http://getpelican.com/">Pelican</a>.
+
+                </address><!-- /#about -->
+        </footer><!-- /#contentinfo -->
+</body>
+</html>
