@@ -40,4 +40,34 @@ of the High Fidelity Heaset profile was crap, which might be expected.
 So I tried using the A2DP sink. It didn't work the first time, but
 after trying it a week later it worked. Yay.
 
+**Update 2016-07-04**: It turned out the problem of the A2DP sink not working was
+structural. After rebooting, I could only connect to my high fidelity headset.
+I came across `this post`_ on ArchLinux's forum, suggesting it might have something to do with the bluetooth discovery module being loaded before X11.
+The solution was to load the bluetooth discovery module after X11 was initialized.
+
+1. Comment out the following lines in ``/etc/pulse/default.pa`` (add a ``#``)
+
+   .. code-block:: sh
+
+      .ifexists module-bluetooth-discover.so
+      load-module module-bluetooth-discover
+      .endif
+
+2. Modify ``/usr/bin/start-pulseaudio-x11`` and include a line to load the module after X11 has been started:
+
+   .. code-block:: sh
+
+      if [ x"$SESSION_MANAGER" != x ] ; then
+        /usr/bin/pactl load-module module-x11-xsmp "display=$DISPLAY session_manager=$SESSION_MANAGER" > /dev/null
+
+	# Add this single line
+	/usr/bin/pactl load-module module-bluetooth-discover
+      fi
+
+3. Reboot.
+
+After booting I'm able to connect to the A2DP sink staight away!
+
+
 .. _`HK Esquire Bluetooth Speaker`: http://www.harmankardon.com/bluetooth-speakers/ESQUIRE.html
+.. _`this post`: https://bbs.archlinux.org/viewtopic.php?pid=1526534#p1526534
