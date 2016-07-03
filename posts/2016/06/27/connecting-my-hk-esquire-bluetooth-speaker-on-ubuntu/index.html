@@ -52,6 +52,30 @@ might be wrong.</p>
 of the High Fidelity Heaset profile was crap, which might be expected.
 So I tried using the A2DP sink. It didn't work the first time, but
 after trying it a week later it worked. Yay.</p>
+<p><strong>Update 2016-07-04</strong>: It turned out the problem of the A2DP sink not working was
+structural. After rebooting, I could only connect to my high fidelity headset.
+I came across <a class="reference external" href="https://bbs.archlinux.org/viewtopic.php?pid=1526534#p1526534">this post</a> on ArchLinux's forum, suggesting it might have something to do with the bluetooth discovery module being loaded before X11.
+The solution was to load the bluetooth discovery module after X11 was initialized.</p>
+<ol class="arabic">
+<li><p class="first">Comment out the following lines in <tt class="docutils literal">/etc/pulse/default.pa</tt> (add a <tt class="docutils literal">#</tt>)</p>
+<div class="highlight"><pre><span></span>.ifexists module-bluetooth-discover.so
+load-module module-bluetooth-discover
+.endif
+</pre></div>
+</li>
+<li><p class="first">Modify <tt class="docutils literal"><span class="pre">/usr/bin/start-pulseaudio-x11</span></tt> and include a line to load the module after X11 has been started:</p>
+<div class="highlight"><pre><span></span><span class="k">if</span> <span class="o">[</span> x<span class="s2">&quot;</span><span class="nv">$SESSION_MANAGER</span><span class="s2">&quot;</span> !<span class="o">=</span> x <span class="o">]</span> <span class="p">;</span> <span class="k">then</span>
+  /usr/bin/pactl load-module module-x11-xsmp <span class="s2">&quot;display=</span><span class="nv">$DISPLAY</span><span class="s2"> session_manager=</span><span class="nv">$SESSION_MANAGER</span><span class="s2">&quot;</span> &gt; /dev/null
+
+  <span class="c1"># Add this single line</span>
+  /usr/bin/pactl load-module module-bluetooth-discover
+<span class="k">fi</span>
+</pre></div>
+</li>
+<li><p class="first">Reboot.</p>
+</li>
+</ol>
+<p>After booting I'm able to connect to the A2DP sink staight away!</p>
 
   </div><!-- /.entry-content -->
 </section>

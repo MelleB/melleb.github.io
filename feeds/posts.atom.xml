@@ -49,6 +49,30 @@ might be wrong.&lt;/p&gt;
 of the High Fidelity Heaset profile was crap, which might be expected.
 So I tried using the A2DP sink. It didn't work the first time, but
 after trying it a week later it worked. Yay.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Update 2016-07-04&lt;/strong&gt;: It turned out the problem of the A2DP sink not working was
+structural. After rebooting, I could only connect to my high fidelity headset.
+I came across &lt;a class="reference external" href="https://bbs.archlinux.org/viewtopic.php?pid=1526534#p1526534"&gt;this post&lt;/a&gt; on ArchLinux's forum, suggesting it might have something to do with the bluetooth discovery module being loaded before X11.
+The solution was to load the bluetooth discovery module after X11 was initialized.&lt;/p&gt;
+&lt;ol class="arabic"&gt;
+&lt;li&gt;&lt;p class="first"&gt;Comment out the following lines in &lt;tt class="docutils literal"&gt;/etc/pulse/default.pa&lt;/tt&gt; (add a &lt;tt class="docutils literal"&gt;#&lt;/tt&gt;)&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;.ifexists module-bluetooth-discover.so
+load-module module-bluetooth-discover
+.endif
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p class="first"&gt;Modify &lt;tt class="docutils literal"&gt;&lt;span class="pre"&gt;/usr/bin/start-pulseaudio-x11&lt;/span&gt;&lt;/tt&gt; and include a line to load the module after X11 has been started:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="o"&gt;[&lt;/span&gt; x&lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;&lt;span class="nv"&gt;$SESSION_MANAGER&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&lt;/span&gt; !&lt;span class="o"&gt;=&lt;/span&gt; x &lt;span class="o"&gt;]&lt;/span&gt; &lt;span class="p"&gt;;&lt;/span&gt; &lt;span class="k"&gt;then&lt;/span&gt;
+  /usr/bin/pactl load-module module-x11-xsmp &lt;span class="s2"&gt;&amp;quot;display=&lt;/span&gt;&lt;span class="nv"&gt;$DISPLAY&lt;/span&gt;&lt;span class="s2"&gt; session_manager=&lt;/span&gt;&lt;span class="nv"&gt;$SESSION_MANAGER&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&lt;/span&gt; &amp;gt; /dev/null
+
+  &lt;span class="c1"&gt;# Add this single line&lt;/span&gt;
+  /usr/bin/pactl load-module module-bluetooth-discover
+&lt;span class="k"&gt;fi&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p class="first"&gt;Reboot.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;After booting I'm able to connect to the A2DP sink staight away!&lt;/p&gt;
 </summary><category term="ubuntu"></category><category term="note-to-self"></category></entry><entry><title>Highlight python class and method names</title><link href="https://melleb.github.io/posts/2016/06/24/highlight-python-class-and-method-names/" rel="alternate"></link><published>2016-06-24T00:00:00+02:00</published><author><name>Melle Boersma</name></author><id>tag:melleb.github.io,2016-06-24:posts/2016/06/24/highlight-python-class-and-method-names/</id><summary type="html">&lt;p&gt;Recently I began working on a personal python-based project. Having
 worked with python in the past, it was a welcoming experience. I
 wasn't really used to a indent-sensitive language. And I figured I
